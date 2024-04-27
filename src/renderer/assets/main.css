@@ -1,0 +1,161 @@
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background: #1e1e1e;
+  color: #fff;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.tools {
+  padding: 20px;
+  background: #333;
+}
+
+.tool-section {
+  display: flex;
+  justify-content: center;
+}
+
+.tool-button {
+  margin: 0 5px;
+  padding: 10px 15px;
+  background: #444;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.tool-button:hover {
+  background: #555;
+}
+
+/* 新增按钮行容器 */
+.button-row {
+  display: flex;
+  justify-content: center; /* 使按钮在容器内居中 */
+  align-items: center;
+  margin-top: 10px; /* 根据需要调整上边距 */
+}
+
+/* 移除.upload-section和.action-buttons的flex布局样式，因为它们现在在.button-row中 */
+.upload-section,
+.action-buttons {
+  display: contents; /* 使子元素作为独立元素显示 */
+}
+
+/* 确保.action-button在新容器中不显示额外边距 */
+.action-button {
+  margin: 0; /* 移除原有的边距 */
+  padding: 10px 20px;
+  background: #444;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.action-button:hover {
+  background: #555;
+}
+
+.upload-button {
+  padding: 10px 20px;
+  background: #444;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  white-space: nowrap;
+}
+
+.upload-button:hover {
+  background: #555;
+}
+
+.tool-section {
+  display: flex;
+  margin-left: auto; /* 将工具按钮组推到右边 */
+  gap: 5px; /* 工具按钮之间的间距 */
+}
+
+
+.action-buttons {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.action-button {
+  margin: 0 5px;
+  padding: 10px 20px;
+  background: #444;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.action-button:hover {
+  background: #555;
+}
+
+.canvas-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #222;
+}
+
+#imageCanvas {
+  border: 1px solid #444;
+  background-color: #333;
+}
+
+
+/* Additional night-themed styles */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 70%);
+  pointer-events: none;
+}
+
+/* Optional: Add some sparkles or stars */
+.star {
+  position: absolute;
+  background-color: #fff;
+  border-radius: 50%;
+  opacity: 0.8;
+}
+
+/* Example of a star at a random position */
+.star:nth-child(1) {
+  width: 3px;
+  height: 3px;
+  top: 10%;
+  left: 20%;
+  animation: twinkle 1s infinite alternate;
+}
+
+/* Simple twinkle animation */
+@keyframes twinkle {
+  from { opacity: 0.8; }
+  to { opacity: 0.2; }
+}
+
+/* Add more stars with different sizes and positions as needed */

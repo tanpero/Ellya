@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Night Style Image Editor</title>
+    <link rel="stylesheet" href="assets/main.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="tools">
+            <div class="tool-section">
+                <button class="tool-button" id="editTool">编辑</button>
+                <button class="tool-button" id="filterTool">滤镜</button>
+                <button class="tool-button" id="colorTool">调色</button>
+                <button class="tool-button" id="textTool">文字</button>
+                <button class="tool-button" id="mosaicTool">马赛克</button>
+                <button class="tool-button" id="brushTool">画笔</button>
+            </div>
+            <div class="button-row">
+                <div class="upload-section">
+                    <input type="file" id="imageUpload" accept="image/*" hidden>
+                    <label for="imageUpload" class="upload-button">上传图片</label>
+                </div>
+                <div class="action-buttons">
+                    <button class="action-button" id="saveButton">保存</button>
+                    <button class="action-button" id="compareButton">对比</button>
+                </div>
+            </div>
+
+        </div>
+        <div class="canvas-container">
+            <canvas id="imageCanvas"></canvas>
+        </div>
+    </div>
+    <script type="module" src="./src/main.ts"></script>
+</body>
+</html>
