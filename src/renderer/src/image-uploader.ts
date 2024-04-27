@@ -1,3 +1,5 @@
+
+
 export const setupImageUploader = () => {
   const uploadInput = document.getElementById('imageUpload') as HTMLInputElement
   const canvas = document.getElementById('imageCanvas') as HTMLCanvasElement
@@ -52,6 +54,50 @@ export const setupImageUploader = () => {
     }
   })
 
+  
+  // 处理粘贴事件
+  function handlePaste(event: ClipboardEvent) {
+    const items = event.clipboardData?.items
+    if (items) {
+      for (let i = 0; i < items.length; i++) {
+        if (items[i].type.indexOf("image") === 0) {
+          const file = items[i].getAsFile()
+          if (file) {
+            const reader = new FileReader()
+            reader.onload = function (e: ProgressEvent<FileReader>) {
+              if (e.target?.result) {
+                const img = new Image()
+                img.onload = drawImage
+                img.src = e.target?.result as string
+              }
+            }
+            reader.readAsDataURL(file)
+          }
+          event.preventDefault()
+          break
+        }
+      }
+    }
+  }
+
+  // 处理拖放事件
+  function handleDrop(event: DragEvent) {
+    event.preventDefault()
+    const files = event.dataTransfer?.files
+    if (files?.length) {
+      const reader = new FileReader()
+      reader.onload = function (e: ProgressEvent<FileReader>) {
+        if (e.target?.result) {
+          const img = new Image()
+          img.onload = drawImage
+          img.src = e.target?.result as string
+        }
+      }
+      reader.readAsDataURL(files[0])
+    }
+  }
+
+
   // 确保canvas尺寸与容器一致
   window.addEventListener('resize', function() {
     const containerRect = canvasContainer.getBoundingClientRect()
@@ -59,4 +105,13 @@ export const setupImageUploader = () => {
     canvas.height = containerRect.height
     drawImage()
   })
+
+  
+  document.addEventListener('paste', handlePaste)
+
+  canvasContainer.addEventListener('drop', handleDrop)
+  canvasContainer.addEventListener('dragover', (event) => {
+    event.preventDefault()
+  })
+
 }
